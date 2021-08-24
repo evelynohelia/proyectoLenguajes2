@@ -15,7 +15,7 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        //
+        return Persona::all();
     }
 
     /**
@@ -37,7 +37,7 @@ class PersonaController extends Controller
      */
     public function show(Persona $persona)
     {
-        //
+        return $persona;
     }
 
     /**
@@ -55,11 +55,13 @@ class PersonaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Persona  $persona
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Persona $persona)
+    public function destroy($id)
     {
-        //
+        $persona = Persona::find($id);
+        $persona->delete();
+        return "Borrado Exitosamente";
     }
 }

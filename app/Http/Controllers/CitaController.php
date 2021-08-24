@@ -14,7 +14,7 @@ class CitaController extends Controller
      */
     public function index()
     {
-        //
+        return Cita::all();
     }
 
     /**
@@ -25,7 +25,8 @@ class CitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cita = new Cita;
+        $cita->create($request->all());
     }
 
     /**
@@ -36,7 +37,7 @@ class CitaController extends Controller
      */
     public function show(Cita $cita)
     {
-        //
+        return $cita;
     }
 
     /**
@@ -48,7 +49,8 @@ class CitaController extends Controller
      */
     public function update(Request $request, Cita $cita)
     {
-        //
+        $cita->update($request->all());
+        return "Update Succesfull";
     }
 
     /**
@@ -59,6 +61,7 @@ class CitaController extends Controller
      */
     public function destroy(Cita $cita)
     {
-        //
+        $cita->delete();
+        return "Borrado Exitosamente";
     }
 }
