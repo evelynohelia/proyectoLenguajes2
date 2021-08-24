@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Persona;
+use App\Models\Cita;
 use Illuminate\Http\Request;
 
-class PersonaController extends Controller
+class CitaController extends Controller
 {
-      
     /**
      * Display a listing of the resource.
      *
@@ -32,10 +31,10 @@ class PersonaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Persona  $persona
+     * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function show(Persona $persona)
+    public function show(Cita $cita)
     {
         //
     }
@@ -44,10 +43,10 @@ class PersonaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Persona  $persona
+     * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Persona $persona)
+    public function update(Request $request, Cita $cita)
     {
         //
     }
@@ -55,10 +54,10 @@ class PersonaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Persona  $persona
+     * @param  \App\Models\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Persona $persona)
+    public function destroy(Cita $cita)
     {
         //
     }
