@@ -14,7 +14,7 @@ class CreateCitasTable extends Migration
     public function up()
     {
         Schema::create('citas', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('id_turno')->unsigned();
             $table->foreign('id_turno')->references('id')->on('turnos');
             $table->integer('id_cliente')->unsigned();

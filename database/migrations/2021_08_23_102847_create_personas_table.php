@@ -18,7 +18,7 @@ class CreatePersonasTable extends Migration
             $table->string('nombres')->nullable();
             $table->string('apellidos')->nullable();
             $table->date('fecha_nacimiento')->format('d-m-Y')->nullable();
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }

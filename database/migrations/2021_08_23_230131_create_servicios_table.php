@@ -14,11 +14,11 @@ class CreateServiciosTable extends Migration
     public function up()
     {
         Schema::create('servicios', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('descripcion')->nullable();
             $table->double('precio')->nullable();
-            $table->integer('id_profesional')->unsigned();
-            $table->foreign('id_profesional')->references('id')->on('profesionals');
+            $table->integer('profesional_id')->unsigned();
+            $table->foreign('profesional_id')->references('id')->on('profesionals');
             $table->timestamps();
         });
     }
