@@ -14,7 +14,7 @@ class ProfesionalController extends Controller
      */
     public function index()
     {
-        //
+        return Profesional::all();
     }
 
     /**
@@ -25,7 +25,9 @@ class ProfesionalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $profesional = new Profesional;
+        $profesional->create($request->all());
+        return "Profesional Creado";
     }
 
     /**
@@ -36,7 +38,7 @@ class ProfesionalController extends Controller
      */
     public function show(Profesional $profesional)
     {
-        //
+        return $profesional;
     }
 
     /**
@@ -48,17 +50,20 @@ class ProfesionalController extends Controller
      */
     public function update(Request $request, Profesional $profesional)
     {
-        //
+        $profesional->update($request->all());
+        return "Profesional Actualizado";
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Profesional  $profesional
+     * @param  int  $profesional
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profesional $profesional)
+    public function destroy($id)
     {
-        //
+        $profesional = Profesional::find($id);
+        $profesional->delete();
+        return "Borrado Exitosamente";
     }
 }

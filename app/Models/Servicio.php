@@ -8,7 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Servicio extends Model
 {
     use HasFactory;
-    
+    protected $fillable = [
+        'descripcion',
+        'precio',
+        'profesional_id',
+    ];
     public function turno()
     {
         return $this->hasMany('App\Models\Turno', 'foreign_key');

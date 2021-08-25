@@ -14,7 +14,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        return Cliente::all();
     }
 
     /**
@@ -25,7 +25,9 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cliente = new Cliente;
+        $cliente->create($request->all());
+        return "Cliente Creado";
     }
 
     /**
@@ -36,7 +38,7 @@ class ClienteController extends Controller
      */
     public function show(Cliente $cliente)
     {
-        //
+        return $cliente;
     }
 
     /**
@@ -48,18 +50,21 @@ class ClienteController extends Controller
      */
     public function update(Request $request, Cliente $cliente)
     {
-        //
+        $cliente->update($request->all());
+        return "Cliente Actualizado";
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Cliente  $cliente
+     * @param  int  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        $cliente = Cliente::find($id);
+        $cliente->delete();
+        return "Borrado Exitosamente";
     }
 
     public function persona()
