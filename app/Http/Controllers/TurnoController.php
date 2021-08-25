@@ -14,7 +14,7 @@ class TurnoController extends Controller
      */
     public function index()
     {
-        //
+        return Turno::all();
     }
 
     /**
@@ -25,7 +25,9 @@ class TurnoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $turno = new Turno;
+        $turno->create($request->all());
+        return "turno creado"; 
     }
 
     /**
@@ -36,7 +38,7 @@ class TurnoController extends Controller
      */
     public function show(Turno $turno)
     {
-        //
+        return $turno;
     }
 
     /**
@@ -46,9 +48,11 @@ class TurnoController extends Controller
      * @param  \App\Models\Turno  $turno
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turno $turno)
+    public function update(Request $request, $id)
     {
-        //
+        $turno=Turno::find($id);
+        $turno->update($request->all());
+        return $turno;
     }
 
     /**
@@ -57,8 +61,10 @@ class TurnoController extends Controller
      * @param  \App\Models\Turno  $turno
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Turno $turno)
+    public function destroy($id)
     {
-        //
+        $turno = Turno::find($id);
+        $turno->delete();
+        return "Borrado Exitosamente";  
     }
 }

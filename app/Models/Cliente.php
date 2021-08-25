@@ -9,6 +9,7 @@ class Cliente extends Model
 {
     use HasFactory;
     
+
     public function persona()
     {
         return $this->belongsTo('App\Models\Persona');

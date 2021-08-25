@@ -18,8 +18,7 @@ class ProfesionProfesional extends Migration
             $table->foreign('profesion_id')->references('id')->on('profesions');
             $table->integer('profesional_id')->unsigned();
             $table->foreign('profesional_id')->references('id')->on('profesionals');
-            $table->primary(['profesion_id', 'profesion_id']);
-
+            $table->primary(['profesion_id', 'profesional_id']);
         });
     }
 

@@ -9,6 +9,13 @@ class Cita extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'descripcion',
+        'estado',
+        'acceso_cliente',
+        'acceso_profesional'
+    ];
+
     public function turno()
     {
         return $this->hasOne('App\Models\Turno', 'foreign_key');

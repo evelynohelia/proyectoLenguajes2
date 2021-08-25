@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Turno extends Model
 {
     use HasFactory;
-    
+
+    protected $fillable = [
+        'fecha_inicio',
+        'fecha_fin',
+        'estado',
+        'id_servicio'
+    ];
+
+
     public function servicio()
     {
         return $this->belongsTo('App\Models\Servicio');

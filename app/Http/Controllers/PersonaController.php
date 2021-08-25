@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PersonaController extends Controller
 {
-      
+
     /**
      * Display a listing of the resource.
      *
@@ -26,7 +26,9 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $persona = new Persona;
+        $persona->create($request->all());
+        return $persona;
     }
 
     /**
