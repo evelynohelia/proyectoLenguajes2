@@ -14,7 +14,7 @@ class TurnoController extends Controller
      */
     public function index()
     {
-        //
+        return Turno::all();//
     }
 
     /**
@@ -34,8 +34,9 @@ class TurnoController extends Controller
      * @param  \App\Models\Turno  $turno
      * @return \Illuminate\Http\Response
      */
-    public function show(Turno $turno)
+    public function show(int $id)
     {
+        $profesional = Profesional::find($id);
         //
     }
 

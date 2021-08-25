@@ -14,7 +14,7 @@ class ProfesionController extends Controller
      */
     public function index()
     {
-        //
+        return Profesional::all(); //
     }
 
     /**
