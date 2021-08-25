@@ -26,7 +26,8 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $persona = new Persona;
+        $persona->create($request->all());
     }
 
     /**
@@ -49,7 +50,8 @@ class PersonaController extends Controller
      */
     public function update(Request $request, Persona $persona)
     {
-        //
+        $persona->update($request->all());
+        return "Persona Actualizada";
     }
 
     /**

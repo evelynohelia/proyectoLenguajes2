@@ -14,7 +14,7 @@ class ServicioController extends Controller
      */
     public function index()
     {
-        //
+        Servicio::all();
     }
 
     /**
@@ -25,7 +25,9 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $servicio = new Servicio;
+        $servicio->create($request->all());
+        return "Servicio Creado";
     }
 
     /**
@@ -36,7 +38,7 @@ class ServicioController extends Controller
      */
     public function show(Servicio $servicio)
     {
-        //
+        return $servicio;
     }
 
     /**
@@ -48,17 +50,20 @@ class ServicioController extends Controller
      */
     public function update(Request $request, Servicio $servicio)
     {
-        //
+        $servicio->update($request->all());
+        return "Persona Actualizada";
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Servicio  $servicio
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Servicio $servicio)
+    public function destroy($id)
     {
-        //
+        $servicio = Servicio::find($id);
+        $servicio->delete();
+        return "Borrado Exitosamente";
     }
 }

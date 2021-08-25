@@ -14,7 +14,7 @@ class ProfesionalController extends Controller
      */
     public function index()
     {
-        //
+        return ProfesionalController::all();
     }
 
     /**
@@ -25,7 +25,9 @@ class ProfesionalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $profesional = new Profesional;
+        $profesional->create($request->all());
+        return "Profesional Creado";
     }
 
     /**
