@@ -31,4 +31,4 @@ Route::resource('/personas',PersonaController::class);
 Route::resource('/clientes',ClienteController::class);
 Route::resource('/profesionales',ProfesionalController::class);
 Route::resource('/servicios',ServicioController::class);
-Route::resource('/turno',ServicioController::class);
+Route::resource('/turno',TurnoController::class);

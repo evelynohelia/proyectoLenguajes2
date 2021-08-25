@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Turno;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 class TurnoController extends Controller
@@ -21,11 +22,16 @@ class TurnoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Servicio  $servicio
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $turno = new Turno;
+        $ser=$request["servicioid"];
+        $turno->create($request->all());
+            return $ser;
+        
     }
 
     /**
@@ -34,10 +40,10 @@ class TurnoController extends Controller
      * @param  \App\Models\Turno  $turno
      * @return \Illuminate\Http\Response
      */
-    public function show(int $id)
+    public function show(Turno $turno)
     {
-        $profesional = Profesional::find($id);
-        //
+
+        return $turno;//
     }
 
     /**
@@ -49,7 +55,8 @@ class TurnoController extends Controller
      */
     public function update(Request $request, Turno $turno)
     {
-        //
+        $turno->update($request->all());
+        return "Turno Actualizado"; //
     }
 
     /**
@@ -58,8 +65,10 @@ class TurnoController extends Controller
      * @param  \App\Models\Turno  $turno
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Turno $turno)
+    public function destroy($id)
     {
-        //
+        $turno = Turno::find($id);
+        $turno->delete();
+        return "Borrado Exitosamente"; //
     }
 }

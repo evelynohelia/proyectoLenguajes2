@@ -25,7 +25,9 @@ class ProfesionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $profesion = new Profesion;
+        $profesion->create($request->all());
+        return "Profesion creada con exito"; //
     }
 
     /**
@@ -36,7 +38,7 @@ class ProfesionController extends Controller
      */
     public function show(Profesion $profesion)
     {
-        //
+        return $profesion;// //
     }
 
     /**
@@ -48,7 +50,8 @@ class ProfesionController extends Controller
      */
     public function update(Request $request, Profesion $profesion)
     {
-        //
+        $profesion->update($request->all());
+        return "Profesion Actualizada"; //
     }
 
     /**
@@ -57,8 +60,10 @@ class ProfesionController extends Controller
      * @param  \App\Models\Profesion  $profesion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Profesion $profesion)
+    public function destroy($id)
     {
-        //
+        $profesion = Profesion::find($id);
+        $profesion->delete();
+        return "Borrado Exitosamente"; ////
     }
 }
