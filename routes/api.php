@@ -24,3 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/persona', PersonaController::class);
 Route::apiResource('/turno', TurnoController::class);
 Route::apiResource('/cita', CitaController::class);
+Route::apiResource('/cliente', ClienteController::class);
+Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
+

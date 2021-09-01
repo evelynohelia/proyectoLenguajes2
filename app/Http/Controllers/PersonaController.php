@@ -66,4 +66,6 @@ class PersonaController extends Controller
         $persona->delete();
         return "Borrado Exitosamente";
     }
+
+
 }

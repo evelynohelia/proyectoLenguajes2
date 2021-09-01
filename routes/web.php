@@ -22,5 +22,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/citas',CitaController::class);
 Route::resource('/personas',PersonaController::class);
+
+
