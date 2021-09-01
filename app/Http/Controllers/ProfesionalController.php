@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Profesional;
 use Illuminate\Http\Request;
+use App\Models\Persona;
+use Illuminate\Support\Facades\DB;
+
 
 class ProfesionalController extends Controller
 {
@@ -65,5 +68,10 @@ class ProfesionalController extends Controller
         $profesional = Profesional::find($id);
         $profesional->delete();
         return "Borrado Exitosamente";
+    }
+
+    public function get3Personas(){
+        $personas = Profesional::with('Persona')->orderBy(DB::raw('RAND()'))->take(3)->get();
+        return $personas;
     }
 }
