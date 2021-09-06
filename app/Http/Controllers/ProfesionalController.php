@@ -36,12 +36,11 @@ class ProfesionalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profesional  $profesional
      * @return \Illuminate\Http\Response
      */
-    public function show(Profesional $profesional)
+    public function show($profesional)
     {
-        return $profesional;
+        return Profesional::findOrFail($profesional);
     }
 
     /**
@@ -73,5 +72,9 @@ class ProfesionalController extends Controller
     public function get3Personas(){
         $personas = Profesional::with('Persona')->orderBy(DB::raw('RAND()'))->take(3)->get();
         return $personas;
+    }
+
+    public function getPersonsaProfesional($id) {
+        return Profesional::with('Persona')->where('id', $id)->get();
     }
 }

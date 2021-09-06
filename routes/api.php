@@ -27,4 +27,5 @@ Route::resource('/clientes',ClienteController::class);
 Route::resource('/profesionales',ProfesionalController::class);
 Route::resource('/servicios',ServicioController::class);
 Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->name('profRecomendados');
+Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
