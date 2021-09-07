@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'apellidos' => $data['apellidos'],
             'fecha_nacimiento' => $data['fecha_nacimiento']
         ]);
+        echo $persona;
 
         return User::create([
             'username' => $data['username'],

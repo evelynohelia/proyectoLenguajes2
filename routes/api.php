@@ -7,6 +7,8 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfesionalController;
 use App\Http\Controllers\ServicioController;
+use App\Http\Controllers\TurnoController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,11 +23,16 @@ use App\Http\Controllers\ServicioController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('/citas',CitaController::class);
-Route::resource('/personas',PersonaController::class);
-Route::resource('/clientes',ClienteController::class);
-Route::resource('/profesionales',ProfesionalController::class);
-Route::resource('/servicios',ServicioController::class);
+Route::apiResource('/citas',CitaController::class);
+Route::apiResource('/personas',PersonaController::class);
+Route::apiResource('/clientes',ClienteController::class);
+Route::apiResource('/profesionales',ProfesionalController::class);
+Route::apiResource('/servicios',ServicioController::class);
+Route::apiResource('/turnos', TurnoController::class);
+Route::apiResource('/profesion',ProfesionController::class);
+Route::apiResource('/profesion_profesional',Profesion_profesionalController::class);
 Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->name('profRecomendados');
 Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
+Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+

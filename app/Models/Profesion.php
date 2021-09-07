@@ -11,4 +11,9 @@ class Profesion extends Model
     protected $fillable = [
         'nombre',
     ];
+
+    public function profesional()
+    {
+        return $this->belongsToMany('App\Models\Profesional');
+    }
 }

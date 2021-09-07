@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PersonaController extends Controller
 {
-      
+
     /**
      * Display a listing of the resource.
      *
@@ -28,6 +28,7 @@ class PersonaController extends Controller
     {
         $persona = new Persona;
         $persona->create($request->all());
+        return $persona;
     }
 
     /**
@@ -66,4 +67,6 @@ class PersonaController extends Controller
         $persona->delete();
         return "Borrado Exitosamente";
     }
+
+
 }

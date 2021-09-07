@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ServicioFactory extends Factory
 {
+
+    
     /**
      * The name of the factory's corresponding model.
      *
