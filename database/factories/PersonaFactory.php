@@ -22,7 +22,7 @@ class PersonaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            
         ];
     }
 }

@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\Turno;
-use App\Models\Servicio;
+use App\Models\Profesion_profesional;
 use Illuminate\Http\Request;
 
-class TurnoController extends Controller
+class Profesion_profesionalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,60 +13,55 @@ class TurnoController extends Controller
      */
     public function index()
     {
-        return Turno::all();//
+        return Profesion_profesional::all();
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Http\Servicio  $servicio
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $turno = new Turno;
-        $ser=$request["servicioid"];
-        $turno->create($request->all());
-            return $ser;
-        
+        $prof_profe = new Profesion_profesional;
+        $prof_profe->create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Turno  $turno
+     * @param  \App\Models\Profesion_profesional  $persona
      * @return \Illuminate\Http\Response
      */
-    public function show(Turno $turno)
+    public function show(Profesion_profesional $prof_profe)
     {
-
-        return $turno;//
+        return $prof_profe;
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Turno  $turno
+     * @param  \Illuminate\Http\Profesion_profesional  $request
+     * @param  \App\Models\Profesion_profesional  $prof_profe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Turno $turno)
+    public function update(Request $request, Profesion_profesional $prof_profe)
     {
-        $turno->update($request->all());
-        return "Turno Actualizado"; //
+        $prof_profe->update($request->all());
+        return "Persona Actualizada";
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Turno  $turno
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $turno = Turno::find($id);
-        $turno->delete();
-        return "Borrado Exitosamente"; //
-    }
+        $prof_profe = Profesion_profesional::find($id);
+        $prof_profe->delete();
+        return "Borrado Exitosamente";
+    } //
 }
