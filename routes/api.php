@@ -45,4 +45,6 @@ Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->n
 Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
 Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/buscarNombre/{nombre}',[ProfesionalController::class,'getBusquedaNombre'])->name('personaProfesional');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
