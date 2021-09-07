@@ -51,7 +51,7 @@ class ClienteController extends Controller
     public function update(Request $request, Cliente $cliente)
     {
         $cliente->update($request->all());
-        return "Cliente Actualizado";
+        return "Update Succesfull: $cliente";
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Cita;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CitaFactory extends Factory
 {
@@ -22,7 +23,10 @@ class CitaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'descripcion'  => $this->faker->name(),
+            'estado'  => $this->faker->name(),
+            'acceso_cliente'  => $this->faker->name(),
+            'acceso_profesional'  => $this->faker->name()
         ];
     }
 }

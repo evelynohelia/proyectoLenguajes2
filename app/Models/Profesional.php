@@ -20,4 +20,10 @@ class Profesional extends Model
     {
         return $this->hasMany('App\Models\Servicio', 'foreign_key');
     }
+
+    public function profesion()
+    {
+        return $this->belongsToMany('App\Models\Profesion');
+    }
+
 }
