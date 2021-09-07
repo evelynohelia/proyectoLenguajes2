@@ -7,10 +7,6 @@ use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfesionalController;
 use App\Http\Controllers\ServicioController;
-use App\Http\Controllers\TurnoController;
-use App\Http\Controllers\ProfesionController;
-
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -30,5 +26,6 @@ Route::resource('/personas',PersonaController::class);
 Route::resource('/clientes',ClienteController::class);
 Route::resource('/profesionales',ProfesionalController::class);
 Route::resource('/servicios',ServicioController::class);
-Route::resource('/turno',TurnoController::class);
-Route::resource('/profesion',ProfesionController::class);
+Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->name('profRecomendados');
+Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

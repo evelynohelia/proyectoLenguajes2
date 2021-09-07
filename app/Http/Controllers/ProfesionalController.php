@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Profesional;
 use Illuminate\Http\Request;
+use App\Models\Persona;
+use Illuminate\Support\Facades\DB;
+
 
 class ProfesionalController extends Controller
 {
@@ -33,12 +36,11 @@ class ProfesionalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Profesional  $profesional
      * @return \Illuminate\Http\Response
      */
-    public function show(Profesional $profesional)
+    public function show($profesional)
     {
-        return $profesional;
+        return Profesional::findOrFail($profesional);
     }
 
     /**
@@ -65,5 +67,14 @@ class ProfesionalController extends Controller
         $profesional = Profesional::find($id);
         $profesional->delete();
         return "Borrado Exitosamente";
+    }
+
+    public function get3Personas(){
+        $personas = Profesional::with('Persona')->orderBy(DB::raw('RAND()'))->take(3)->get();
+        return $personas;
+    }
+
+    public function getPersonsaProfesional($id) {
+        return Profesional::with('Persona')->where('id', $id)->get();
     }
 }
