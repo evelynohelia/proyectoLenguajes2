@@ -19,4 +19,5 @@ class Profesional extends Model
     public function servicio()
     {
         return $this->hasMany('App\Models\Servicio', 'foreign_key');
-    }}
+    }
+}
