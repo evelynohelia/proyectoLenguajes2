@@ -48,7 +48,8 @@ Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->n
 Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
 Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasCliente'] );
 Route::get('/profesional/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/buscarNombre/{nombre}',[ProfesionalController::class,'getBusquedaNombre'])->name('personaProfesional');
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/cliente/citasDelete/{cita}',[CitaController::class,'deleteCitaCliente'])->name('personaProfesional');
+Route::post('/profesional/citasDelete/{cita}',[CitaController::class,'deleteCitaProfesional'])->name('personaProfesional');
+Route::post('/changeStatusCitas/{cita}',[CitaController::class,'changeStatus'])->name('personaProfesional');
 
