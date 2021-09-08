@@ -30,6 +30,7 @@ Route::group([
     'prefix' => 'auth'
 ], function ($router) {
     Route::post('login', [AuthController::class, 'login'] );
+    Route::post('register', [AuthController::class, 'register'] );
 
 });
 
@@ -45,7 +46,8 @@ Route::apiResource('/profesion',ProfesionController::class);
 //Route::apiResource('/profesion_profesional',Profesion_profesionalController::class);
 Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->name('profRecomendados');
 Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
-Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
+Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasCliente'] );
+Route::get('/profesional/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/buscarNombre/{nombre}',[ProfesionalController::class,'getBusquedaNombre'])->name('personaProfesional');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

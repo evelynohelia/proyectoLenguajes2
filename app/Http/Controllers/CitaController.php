@@ -109,38 +109,32 @@ class CitaController extends Controller
 
     public function getCitasAgendadasCliente($idCliente){
         $clienteID = Cliente::find($idCliente);
-        $servicios = Servicio::where('profesional_id',$clienteID['id'])->get();
+        $citas = Cita::where('id_cliente',$clienteID['id'])->get();
         $arrayCitas = [];
+        foreach ($citas as $cita){
+            $turno = Turno::where('id',$cita['id_turno'])->get()->first();
+            $servicio = Servicio::where('id',$turno['id_servicio'])->get()->first();
+            $profesional = Profesional::where('id',$servicio['profesional_id'])->get()->first();
+            $persona = Persona::where('id',$profesional['persona_id'])->get()->first();
+            $array = [
+                "id"=>$cita["id"],
+                "turno"=>$turno,
+                "profesional"=>[
+                    "nombres"=>$persona['nombres'],
+                    "apellidos"=>$persona['apellidos']
+                ],
+                "cliente"=>[
+                    "nombres"=>$clienteID['nombres'],
+                    "apellidos"=>$clienteID['apellidos']
+                ],
+                "descripcion"=> $cita["descripcion"],
+                "estado"=> $cita["estado"],
+                "servicio"=>$servicio,
+                "acceso_cliente"=> $cita["acceso_cliente"],
+                "acceso_profesional"=> $cita["acceso_profesional"],
+            ];
+            array_push($arrayCitas,$array);
 
-        foreach ($servicios as $servicio){
-            $profesional = Profesional::where('id',$servicio['profesional_id'])->get();
-            $personaProfesional = Persona::where('id',$profesional['persona_id'])->get()->first();
-            $turnos_servicio = Turno::where('id_servicio',$servicio['id'])->get();
-            foreach ($turnos_servicio as $turno_servicio){
-                $cita = Cita::where('id_turno',$turno_servicio['id'])->get()->first();
-                if($cita){
-                    $cliente = Cliente::where('id',$cita['id_cliente'])->get()->first();
-                    $persona = Persona::where('id',$cliente['persona_id'])->get()->first();
-                    $array = [
-                        "id"=>$cita["id"],
-                        "turno"=>$turno_servicio,
-                        "profesional"=>[
-                            "nombres"=>$personaProfesional['nombres'],
-                            "apellidos"=>$personaProfesional['apellidos']
-                        ],
-                        "cliente"=>[
-                            "nombres"=>$persona['nombres'],
-                            "apellidos"=>$persona['apellidos']
-                        ],
-                        "descripcion"=> $cita["descripcion"],
-                        "estado"=> $cita["estado"],
-                        "servicio"=>$servicio,
-                        "acceso_cliente"=> $cita["acceso_cliente"],
-                        "acceso_profesional"=> $cita["acceso_profesional"],
-                    ];
-                    array_push($arrayCitas,$array);
-                }
-            }
         }
         return $arrayCitas;
     }
