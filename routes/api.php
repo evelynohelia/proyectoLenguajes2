@@ -6,8 +6,10 @@ use App\Http\Controllers\CitaController;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfesionalController;
+use App\Http\Controllers\ProfesionController;
 use App\Http\Controllers\ServicioController;
 use App\Http\Controllers\TurnoController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +22,29 @@ use App\Http\Controllers\TurnoController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::group([
+    'prefix' => 'auth'
+], function ($router) {
+    Route::post('login', [AuthController::class, 'login'] );
+
 });
+
 Route::apiResource('/citas',CitaController::class);
-Route::apiResource('/personas',PersonaController::class);
+Route::apiResource('/personas',PersonaController::class)->middleware('auth:api');
 Route::apiResource('/clientes',ClienteController::class);
 Route::apiResource('/profesionales',ProfesionalController::class);
 Route::apiResource('/servicios',ServicioController::class);
 Route::apiResource('/turnos', TurnoController::class);
 Route::apiResource('/profesion',ProfesionController::class);
-Route::apiResource('/profesion_profesional',Profesion_profesionalController::class);
+//Route::apiResource('/profesion_profesional',Profesion_profesionalController::class);
 Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->name('profRecomendados');
 Route::get('/personaProfesional/{id}',[ProfesionalController::class,'getPersonsaProfesional'])->name('personaProfesional');
 Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasProfesional'] );
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/buscarNombre/{nombre}',[ProfesionalController::class,'getBusquedaNombre'])->name('personaProfesional');
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
