@@ -6,6 +6,7 @@ use App\Models\Turno;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
 
+
 class TurnoController extends Controller
 {
     /**
@@ -41,6 +42,35 @@ class TurnoController extends Controller
     public function show(Turno $turno)
     {
         return $turno;
+    }
+
+    public function buscarTurnoProfesional($id_profesional){
+        $turnos= Turno::all();
+        $turnos1 = [];
+        foreach ($turnos as $turno){
+            $servicios=Servicio::where('id',$turno['id_servicio'])->get();
+            if(count($servicios)>1){
+                foreach ($servicios as $servicio){
+                    if($servicios['profesional_id']==$id_profesional){
+                        array_push($turnos1,$turno);
+                    }
+                }
+            }
+            else if(count($servicios)==1){
+                
+                
+                
+                if($servicios[0]['profesional_id']==$id_profesional){
+                    
+                    array_push($turnos1,$turno);
+                }
+            }
+            
+
+
+        }
+        //return $turnos1;
+        return $turnos1;
     }
 
     /**

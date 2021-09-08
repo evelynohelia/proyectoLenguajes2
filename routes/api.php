@@ -39,6 +39,8 @@ Route::apiResource('/clientes',ClienteController::class);
 Route::apiResource('/profesionales',ProfesionalController::class);
 Route::apiResource('/servicios',ServicioController::class);
 Route::apiResource('/turnos', TurnoController::class);
+
+Route::get('/turnos/profesionales/{id}',[TurnoController::class,'buscarTurnoProfesional'])->name('turnosProf');
 Route::apiResource('/profesion',ProfesionController::class);
 //Route::apiResource('/profesion_profesional',Profesion_profesionalController::class);
 Route::get('/profRecomendados',[ProfesionalController::class,'get3Personas'])->name('profRecomendados');

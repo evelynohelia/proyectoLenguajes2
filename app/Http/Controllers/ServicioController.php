@@ -25,9 +25,11 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        $servicio = new Servicio;
-        $servicio->create($request->all());
-        return "Servicio Creado";
+        $servicios = new Servicio;
+        $servicios=$servicios->create($request->all());
+        $servicioId = $servicios->id;
+        
+        return $servicios;
     }
 
     /**
