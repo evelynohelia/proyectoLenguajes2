@@ -34,12 +34,12 @@ class PersonaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Persona  $persona
+     * @param  int $persona
      * @return \Illuminate\Http\Response
      */
-    public function show(Persona $persona)
+    public function show($persona)
     {
-        return $persona;
+        return Persona::findOrFail($persona);
     }
 
     /**
@@ -49,8 +49,9 @@ class PersonaController extends Controller
      * @param  \App\Models\Persona  $persona
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Persona $persona)
+    public function update(Request $request, $id)
     {
+        $persona = Persona::find($id);
         $persona->update($request->all());
         return "Persona Actualizada";
     }

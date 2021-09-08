@@ -48,4 +48,5 @@ Route::get('/cliente/citas/{id}', [CitaController::class, 'getCitasAgendadasClie
 Route::post('/cliente/citasDelete/{id}', [CitaController::class, 'deleteCitaCliente'] );
 Route::post('/profesional/citasDelete/{id}', [CitaController::class, 'deleteCitaProfesional'] );
 Route::post('/changeStatusCitas/{id}', [CitaController::class, 'changeStatus'] );
+Route::get('/buscarNombre/{nombre}',[ProfesionalController::class,'getBusquedaNombre'])->name('personaProfesional');
 
