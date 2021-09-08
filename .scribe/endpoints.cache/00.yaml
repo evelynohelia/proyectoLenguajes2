@@ -67,7 +67,7 @@ endpoints:
         name: id
         description: 'The ID of the cita.'
         required: true
-        example: 13
+        example: 16
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -90,7 +90,7 @@ endpoints:
         name: id
         description: 'The ID of the cita.'
         required: true
-        example: 18
+        example: 20
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -166,7 +166,7 @@ endpoints:
         name: id
         description: 'The ID of the persona.'
         required: true
-        example: 7
+        example: 12
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -189,7 +189,7 @@ endpoints:
         name: id
         description: 'The ID of the persona.'
         required: true
-        example: 16
+        example: 14
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -211,7 +211,7 @@ endpoints:
         name: id
         description: 'The ID of the persona.'
         required: true
-        example: 16
+        example: 6
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -265,7 +265,7 @@ endpoints:
         name: id
         description: 'The ID of the cliente.'
         required: true
-        example: 4
+        example: 18
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -288,7 +288,7 @@ endpoints:
         name: id
         description: 'The ID of the cliente.'
         required: true
-        example: 17
+        example: 1
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -310,7 +310,7 @@ endpoints:
         name: id
         description: 'The ID of the cliente.'
         required: true
-        example: 17
+        example: 1
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -364,7 +364,7 @@ endpoints:
         name: id
         description: 'The ID of the profesionale.'
         required: true
-        example: ut
+        example: dolores
         type: string
     queryParameters: []
     bodyParameters: []
@@ -409,7 +409,7 @@ endpoints:
         name: id
         description: 'The ID of the profesionale.'
         required: true
-        example: nihil
+        example: sunt
         type: string
     queryParameters: []
     bodyParameters: []
@@ -463,7 +463,7 @@ endpoints:
         name: id
         description: 'The ID of the servicio.'
         required: true
-        example: 3
+        example: 10
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -486,7 +486,7 @@ endpoints:
         name: id
         description: 'The ID of the servicio.'
         required: true
-        example: 5
+        example: 1
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -508,7 +508,7 @@ endpoints:
         name: id
         description: 'The ID of the servicio.'
         required: true
-        example: 17
+        example: 12
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -561,6 +561,105 @@ endpoints:
       id:
         name: id
         description: 'The ID of the turno.'
+        required: true
+        example: 19
+        type: integer
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/turnos/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the turno.'
+        required: true
+        example: 2
+        type: integer
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/turnos/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the turno.'
+        required: true
+        example: 11
+        type: integer
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/profesion
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/profesion
+    metadata:
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/profesion/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the profesion.'
         required: true
         example: 18
         type: integer
@@ -572,7 +671,7 @@ endpoints:
     httpMethods:
       - PUT
       - PATCH
-    uri: 'api/turnos/{id}'
+    uri: 'api/profesion/{id}'
     metadata:
       title: 'Update the specified resource in storage.'
       description: ''
@@ -583,29 +682,7 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the turno.'
-        required: true
-        example: 13
-        type: integer
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/turnos/{id}'
-    metadata:
-      title: 'Remove the specified resource from storage.'
-      description: ''
-      authenticated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the turno.'
+        description: 'The ID of the profesion.'
         required: true
         example: 4
         type: integer
@@ -615,83 +692,6 @@ endpoints:
     responseFields: []
   -
     httpMethods:
-      - GET
-    uri: api/profesion
-    metadata:
-      title: 'Display a listing of the resource.'
-      description: ''
-      authenticated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: api/profesion
-    metadata:
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/profesion/{id}'
-    metadata:
-      title: 'Display the specified resource.'
-      description: ''
-      authenticated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the profesion.'
-        required: true
-        example: 3
-        type: integer
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/profesion/{id}'
-    metadata:
-      title: 'Update the specified resource in storage.'
-      description: ''
-      authenticated: false
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the profesion.'
-        required: true
-        example: 10
-        type: integer
-    queryParameters: []
-    bodyParameters: []
-    responses: []
-    responseFields: []
-  -
-    httpMethods:
       - DELETE
     uri: 'api/profesion/{id}'
     metadata:
@@ -706,7 +706,7 @@ endpoints:
         name: id
         description: 'The ID of the profesion.'
         required: true
-        example: 19
+        example: 11
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -744,7 +744,7 @@ endpoints:
         name: id
         description: 'The ID of the personaProfesional.'
         required: true
-        example: aspernatur
+        example: quis
         type: string
     queryParameters: []
     bodyParameters: []
@@ -766,7 +766,7 @@ endpoints:
         name: id
         description: 'The ID of the cita.'
         required: true
-        example: 13
+        example: 17
         type: integer
     queryParameters: []
     bodyParameters: []
@@ -788,7 +788,117 @@ endpoints:
         name: nombre
         description: ''
         required: true
-        example: libero
+        example: quos
+        type: string
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/cliente/citasPendientes/{id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the citasPendiente.'
+        required: true
+        example: in
+        type: string
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/profesional/citas/{id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the cita.'
+        required: true
+        example: 2
+        type: integer
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/cliente/citasDelete/{id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the citasDelete.'
+        required: true
+        example: nihil
+        type: string
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/profesional/citasDelete/{id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the citasDelete.'
+        required: true
+        example: vero
+        type: string
+    queryParameters: []
+    bodyParameters: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/changeStatusCitas/{id}'
+    metadata:
+      title: ''
+      description: ''
+      authenticated: false
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the changeStatusCita.'
+        required: true
+        example: est
         type: string
     queryParameters: []
     bodyParameters: []

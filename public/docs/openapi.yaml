@@ -147,7 +147,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the cita.'
-        example: 13
+        example: 16
         required: true
         schema:
           type: integer
@@ -268,7 +268,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the persona.'
-        example: 7
+        example: 12
         required: true
         schema:
           type: integer
@@ -389,7 +389,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the cliente.'
-        example: 4
+        example: 18
         required: true
         schema:
           type: integer
@@ -510,7 +510,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the profesionale.'
-        example: ut
+        example: dolores
         required: true
         schema:
           type: string
@@ -631,7 +631,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the servicio.'
-        example: 3
+        example: 10
         required: true
         schema:
           type: integer
@@ -752,7 +752,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the turno.'
-        example: 18
+        example: 19
         required: true
         schema:
           type: integer
@@ -873,7 +873,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the profesion.'
-        example: 3
+        example: 18
         required: true
         schema:
           type: integer
@@ -928,7 +928,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the personaProfesional.'
-        example: aspernatur
+        example: quis
         required: true
         schema:
           type: string
@@ -960,7 +960,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the cita.'
-        example: 13
+        example: 17
         required: true
         schema:
           type: integer
@@ -992,7 +992,167 @@ paths:
         in: path
         name: nombre
         description: ''
-        example: libero
+        example: quos
+        required: true
+        schema:
+          type: string
+  '/api/cliente/citasPendientes/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the citasPendiente.'
+        example: in
+        required: true
+        schema:
+          type: string
+  '/api/profesional/citas/{id}':
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the cita.'
+        example: 2
+        required: true
+        schema:
+          type: integer
+  '/api/cliente/citasDelete/{id}':
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the citasDelete.'
+        example: nihil
+        required: true
+        schema:
+          type: string
+  '/api/profesional/citasDelete/{id}':
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the citasDelete.'
+        example: vero
+        required: true
+        schema:
+          type: string
+  '/api/changeStatusCitas/{id}':
+    post:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the changeStatusCita.'
+        example: est
         required: true
         schema:
           type: string
