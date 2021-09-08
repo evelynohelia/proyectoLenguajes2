@@ -13,8 +13,8 @@ class Cita extends Model
         'estado',
         'acceso_cliente',
         'acceso_profesional',
-        'turno_id',
-        'cliente_id',
+        'id_turno',
+        'id_cliente',
         'descripcion',
     ];
     public function turno()
