@@ -78,6 +78,6 @@ class ProfesionalController extends Controller
         return Profesional::with('Persona')->where('persona_id', $id)->get();
     }
     public function getBusquedaNombre($nombre){
-        return Profesional::leftjoin('personas','personas.id','=','profesionals.id')->where('nombres','LIKE', "%{$nombre}%")->orWhere('apellidos','LIKE', "%{$nombre}")->get();
+        return Profesional::leftjoin('personas','personas.id','=','profesionals.persona_id')->where('nombres','LIKE', "%{$nombre}%")->orWhere('apellidos','LIKE', "%{$nombre}")->get();
     }
 }
