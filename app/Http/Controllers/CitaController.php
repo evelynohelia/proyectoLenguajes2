@@ -72,30 +72,10 @@ class CitaController extends Controller
 
     public function getCitasAgendadasProfesional($idProfesional){
         $profesionalID = Profesional::find($idProfesional);
+        $personaProfesional = Persona::where('id',$profesionalID['persona_id'])->get()->first();
         $servicios = Servicio::where('profesional_id',$profesionalID['id'])->get();
         $arrayCitas = [];
 
-//        $turnos= [];
-//        foreach ($servicios as $servicio){
-//            $turnos_servicio = Turno::where('id_servicio',$servicio['id'])->get();
-//            foreach ($turnos_servicio as $turno_servicio){
-//                array_push($turnos,$turno_servicio);
-//            }
-//        }
-//        $citas= [];
-//
-//        foreach ($turnos as $turno){
-//            $cita = Cita::where('id_turno',$turno['id'])->get()->first();
-//            if($cita) array_push($citas,$cita);
-//        }
-//
-//        $arrayCitas = [];
-//        foreach ($citas as $cita){
-//            $array =[
-//                "id"=>$cita["id"]
-//            ];
-//            array_push($arrayCitas,$array);
-//        }
         foreach ($servicios as $servicio){
             $turnos_servicio = Turno::where('id_servicio',$servicio['id'])->get();
             foreach ($turnos_servicio as $turno_servicio){
@@ -106,6 +86,10 @@ class CitaController extends Controller
                     $array = [
                         "id"=>$cita["id"],
                         "turno"=>$turno_servicio,
+                        "profesional"=>[
+                            "nombres"=>$personaProfesional['nombres'],
+                            "apellidos"=>$personaProfesional['apellidos']
+                        ],
                         "cliente"=>[
                             "nombres"=>$persona['nombres'],
                             "apellidos"=>$persona['apellidos']
@@ -129,6 +113,8 @@ class CitaController extends Controller
         $arrayCitas = [];
 
         foreach ($servicios as $servicio){
+            $profesional = Profesional::where('id',$servicio['profesional_id'])->get();
+            $personaProfesional = Persona::where('id',$profesional['persona_id'])->get()->first();
             $turnos_servicio = Turno::where('id_servicio',$servicio['id'])->get();
             foreach ($turnos_servicio as $turno_servicio){
                 $cita = Cita::where('id_turno',$turno_servicio['id'])->get()->first();
@@ -138,6 +124,10 @@ class CitaController extends Controller
                     $array = [
                         "id"=>$cita["id"],
                         "turno"=>$turno_servicio,
+                        "profesional"=>[
+                            "nombres"=>$personaProfesional['nombres'],
+                            "apellidos"=>$personaProfesional['apellidos']
+                        ],
                         "cliente"=>[
                             "nombres"=>$persona['nombres'],
                             "apellidos"=>$persona['apellidos']
@@ -157,6 +147,7 @@ class CitaController extends Controller
 
     public function getCitasPendientesProfesional($idProfesional){
         $profesionalID = Profesional::find($idProfesional);
+        $personaProfesional = Persona::where('id',$profesionalID['persona_id'])->get()->first();
         $servicios = Servicio::where('profesional_id',$profesionalID['id'])->get();
         $arrayCitas = [];
 
@@ -169,6 +160,10 @@ class CitaController extends Controller
                     $persona = Persona::where('id',$cliente['persona_id'])->get()->first();
                     $array = [
                         "id"=>$cita["id"],
+                        "profesional"=>[
+                            "nombres"=>$personaProfesional['nombres'],
+                            "apellidos"=>$personaProfesional['apellidos']
+                        ],
                         "turno"=>$turno_servicio,
                         "cliente"=>[
                             "nombres"=>$persona['nombres'],

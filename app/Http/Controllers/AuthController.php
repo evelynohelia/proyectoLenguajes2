@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Persona;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -13,7 +16,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -30,6 +33,23 @@ class AuthController extends Controller
         }
 
         return $this->respondWithToken($token);
+    }
+
+    public function register(Request $data)
+    {
+        $persona = Persona::create([
+            'nombres' => $data['nombres'],
+            'apellidos' => $data['apellidos'],
+            'fecha_nacimiento' => $data['fecha_nacimiento']
+        ]);
+        echo $persona;
+
+        return User::create([
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'persona_id' => $persona['id']
+        ]);
     }
 
     /**
