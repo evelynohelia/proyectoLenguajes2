@@ -62,7 +62,7 @@ class CitaController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Cita  $cita
-     * @return \Illuminate\Http\Response
+     * @return string
      */
     public function destroy(Cita $cita)
     {
@@ -122,4 +122,89 @@ class CitaController extends Controller
         }
         return $arrayCitas;
     }
+
+    public function getCitasAgendadasCliente($idCliente){
+        $clienteID = Cliente::find($idCliente);
+        $servicios = Servicio::where('profesional_id',$clienteID['id'])->get();
+        $arrayCitas = [];
+
+        foreach ($servicios as $servicio){
+            $turnos_servicio = Turno::where('id_servicio',$servicio['id'])->get();
+            foreach ($turnos_servicio as $turno_servicio){
+                $cita = Cita::where('id_turno',$turno_servicio['id'])->get()->first();
+                if($cita){
+                    $cliente = Cliente::where('id',$cita['id_cliente'])->get()->first();
+                    $persona = Persona::where('id',$cliente['persona_id'])->get()->first();
+                    $array = [
+                        "id"=>$cita["id"],
+                        "turno"=>$turno_servicio,
+                        "cliente"=>[
+                            "nombres"=>$persona['nombres'],
+                            "apellidos"=>$persona['apellidos']
+                        ],
+                        "descripcion"=> $cita["descripcion"],
+                        "estado"=> $cita["estado"],
+                        "servicio"=>$servicio,
+                        "acceso_cliente"=> $cita["acceso_cliente"],
+                        "acceso_profesional"=> $cita["acceso_profesional"],
+                    ];
+                    array_push($arrayCitas,$array);
+                }
+            }
+        }
+        return $arrayCitas;
+    }
+
+    public function getCitasPendientesProfesional($idProfesional){
+        $profesionalID = Profesional::find($idProfesional);
+        $servicios = Servicio::where('profesional_id',$profesionalID['id'])->get();
+        $arrayCitas = [];
+
+        foreach ($servicios as $servicio){
+            $turnos_servicio = Turno::where('id_servicio',$servicio['id'])->get();
+            foreach ($turnos_servicio as $turno_servicio){
+                $cita = Cita::where('id_turno',$turno_servicio['id'])->get()->first();
+                if($cita && $cita['estado']=="Pendiente"){
+                    $cliente = Cliente::where('id',$cita['id_cliente'])->get()->first();
+                    $persona = Persona::where('id',$cliente['persona_id'])->get()->first();
+                    $array = [
+                        "id"=>$cita["id"],
+                        "turno"=>$turno_servicio,
+                        "cliente"=>[
+                            "nombres"=>$persona['nombres'],
+                            "apellidos"=>$persona['apellidos']
+                        ],
+                        "descripcion"=> $cita["descripcion"],
+                        "estado"=> $cita["estado"],
+                        "servicio"=>$servicio,
+                        "acceso_cliente"=> $cita["acceso_cliente"],
+                        "acceso_profesional"=> $cita["acceso_profesional"],
+                    ];
+                    array_push($arrayCitas,$array);
+                }
+            }
+        }
+        return $arrayCitas;
+    }
+
+    public function deleteCitaCliente($citaID){
+        $cita = Cita::find($citaID);
+        $cita->update(['acceso_cliente' => "borrador"]);
+        return "updated:  $cita";
+    }
+
+    public function deleteCitaProfesional($citaID){
+        $cita = Cita::find($citaID);
+        $cita->update(['acceso_profesional' => "borrador"]);
+        return "updated:  $cita";
+    }
+
+
+    public function changeStatus($idCita, Request $request){
+        $status = $request['status'];
+        $cita = Cita::find($idCita);
+        $cita->update(['estado' => $status]);
+        return "updated:  $cita";
+    }
+
 }
